@@ -1,0 +1,46 @@
+doctype html
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet")
+		style.
+			html, body {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+				line-height: 1;
+				font-family: "Ubuntu";
+			}
+			.entry {
+				width: 100%;
+				padding: 1rem;
+				color: white;
+			}
+			.date {
+				font-family: "Ubuntu Mono";
+			}
+
+	body
+		each entry in entries
+			div.entry(style=`background-color: ${entry.color};`)
+				h2.date=entry.dateString
+				p.message=entry.message
+
+		script.
+			document.querySelectorAll(".entry").forEach(function(entry) {
+				var visible = true;
+
+				entry.onclick = function() {
+					visible = !visible;
+
+					if(visible) {
+						entry.children[1].style.display = "none";
+					} else {
+						entry.children[1].style.display = "block";
+					}
+
+				};
+			});
