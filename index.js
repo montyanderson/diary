@@ -7,6 +7,8 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 
+app.use(express.static(__dirname + "/static"));
+
 app.get("/", (req, res) => {
 	db.zrangebyscoreAsync("diary-dates", +moment().subtract(7, "days"), +moment(), "WITHSCORES")
 	.then(items => {

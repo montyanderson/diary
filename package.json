@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "browserify scripts/index.js -o static/index.js -t [ babelify --presets [ es2015 ] ] -g uglifyify",
+    "dev": "watchify scripts/index.js -o static/index.js -t [ babelify --presets [ es2015 ] ]"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,17 @@
   },
   "homepage": "https://github.com/montyanderson/diary#readme",
   "dependencies": {
+    "asmcrypto.js": "0.0.11",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
     "bluebird": "^3.4.6",
+    "browserify": "^13.1.1",
     "express": "^4.14.0",
     "moment": "^2.17.0",
     "pug": "^2.0.0-beta6",
-    "redis": "^2.6.3"
+    "redis": "^2.6.3",
+    "uglify-js": "^2.7.5",
+    "uglifyify": "^3.0.4",
+    "watchify": "^3.7.0"
   }
 }

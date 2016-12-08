@@ -24,23 +24,12 @@ html
 			}
 
 	body
+		input(type="password" id="password")
+		button(id="decrypt") Decrypt
+
 		each entry in entries
 			div.entry(style=`background-color: ${entry.color};`)
 				h2.date=entry.dateString
 				p.message=entry.message
 
-		script.
-			document.querySelectorAll(".entry").forEach(function(entry) {
-				var visible = true;
-
-				entry.onclick = function() {
-					visible = !visible;
-
-					if(visible) {
-						entry.children[1].style.display = "none";
-					} else {
-						entry.children[1].style.display = "block";
-					}
-
-				};
-			});
+		script(src="/index.js")
