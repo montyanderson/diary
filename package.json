@@ -8,6 +8,9 @@
     "prepublish": "browserify scripts/index.js -o static/index.js -t [ babelify --presets [ es2015 ] ] -g uglifyify",
     "dev": "watchify scripts/index.js -o static/index.js -t [ babelify --presets [ es2015 ] ]"
   },
+  "browser": {
+    "./lib/cryptoWrapper.js": "./lib/cryptoWrapperClient.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/montyanderson/diary.git"
